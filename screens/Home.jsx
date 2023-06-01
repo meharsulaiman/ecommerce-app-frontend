@@ -8,6 +8,7 @@ import { Avatar, Button } from 'react-native-paper';
 import SearchModal from '../components/SearchModal';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
+import Heading from '../components/Heading';
 
 const categories = [
   { category: 'jeans', _id: 1 },
@@ -83,10 +84,7 @@ const Home = () => {
           }}
         >
           {/* Main Heading */}
-          <View>
-            <Text style={{ fontSize: 25 }}>Our</Text>
-            <Text style={{ fontSize: 25, fontWeight: '900' }}>Products</Text>
-          </View>
+          <Heading text1={'Our'} text2={'Products'} />
 
           {/* Searchbar */}
           <View>
