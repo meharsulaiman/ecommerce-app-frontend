@@ -5,8 +5,9 @@ import Heading from '../components/Heading';
 import { colors, defaultStyle } from '../styles/styles';
 import { Button } from 'react-native-paper';
 import CartItem from '../components/CartItem';
+import { useNavigation } from '@react-navigation/native';
 
-const cartItems = [
+export const cartItems = [
   {
     name: 'Item 1',
     image:
@@ -25,9 +26,65 @@ const cartItems = [
     price: 2999,
     quantity: 10,
   },
+  {
+    name: 'Item 2',
+    image:
+      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
+    product: 3, //id
+    stock: 5,
+    price: 2999,
+    quantity: 10,
+  },
+  {
+    name: 'Item 2',
+    image:
+      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
+    product: 4, //id
+    stock: 5,
+    price: 2999,
+    quantity: 10,
+  },
+  {
+    name: 'Item 2',
+    image:
+      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
+    product: 5, //id
+    stock: 5,
+    price: 2999,
+    quantity: 10,
+  },
+  {
+    name: 'Item 2',
+    image:
+      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
+    product: 6, //id
+    stock: 5,
+    price: 2999,
+    quantity: 10,
+  },
+  {
+    name: 'Item 2',
+    image:
+      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
+    product: 7, //id
+    stock: 5,
+    price: 2999,
+    quantity: 10,
+  },
+  {
+    name: 'Item 2',
+    image:
+      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
+    product: 8, //id
+    stock: 5,
+    price: 2999,
+    quantity: 10,
+  },
 ];
 
 const Cart = () => {
+  const navigate = useNavigation();
+
   const incrementHandler = (id, quantity, stock) => {
     console.log('incrementHandler', id, quantity, stock);
   };
@@ -93,6 +150,9 @@ const Cart = () => {
           margin: 30,
         }}
         activeOpacity={0.9}
+        onPress={
+          cartItems.length > 0 ? () => navigate.navigate('confirmorder') : null
+        }
       >
         <Button textColor={colors.color2} icon={'cart'}>
           Checkout
