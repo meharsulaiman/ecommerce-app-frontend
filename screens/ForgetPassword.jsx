@@ -5,19 +5,18 @@ import {
   defaultStyle,
   formHeading,
   inputOptions,
-  inputStyle,
 } from '../styles/styles';
 import { Button, TextInput } from 'react-native-paper';
-import { Toast } from 'react-native-toast-message/lib/src/Toast';
 import Footer from '../components/Footer';
 
-const Login = ({ navigation }) => {
+const ForgetPassword = ({ navigation }) => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const loading = false;
 
   const submitHandler = () => {
     alert('Yeah');
+    // Remove in the future
+    navigation.navigate('verify');
   };
 
   return (
@@ -25,7 +24,7 @@ const Login = ({ navigation }) => {
       <View style={{ ...defaultStyle, backgroundColor: colors.color2 }}>
         {/* Heading */}
         <View style={{ marginBottom: 20 }}>
-          <Text style={formHeading}>Login</Text>
+          <Text style={formHeading}>Forget Password</Text>
         </View>
 
         <View style={styles.container}>
@@ -36,37 +35,24 @@ const Login = ({ navigation }) => {
             onChangeText={setEmail}
             keyboardType='email-address'
           />
-          <TextInput
-            {...inputOptions}
-            placeholder='Password'
-            value={password}
-            secureTextEntry={true}
-            onChangeText={setPassword}
-          />
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => navigation.navigate('forgetpassword')}
-          >
-            <Text style={styles.forget}>Forget Password</Text>
-          </TouchableOpacity>
 
           <Button
             style={styles.btn}
             textColor={colors.color2}
-            disabled={email === '' || password === ''}
+            disabled={email === ''}
             onPress={submitHandler}
             loading={loading}
           >
-            Log In
+            Send OTP
           </Button>
 
           <Text style={styles.or}>OR</Text>
 
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('signup')}
+            onPress={() => navigation.navigate('login')}
           >
-            <Text style={styles.link}>Sign Up</Text>
+            <Text style={styles.link}>Log In</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -84,13 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     elevation: 10,
   },
-  forget: {
-    color: colors.color2,
-    marginHorizontal: 20,
-    marginBottom: 10,
-    alignSelf: 'flex-end',
-    fontWeight: '100',
-  },
+
   btn: {
     backgroundColor: colors.color1,
     margin: 20,
@@ -112,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default ForgetPassword;

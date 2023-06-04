@@ -25,3 +25,22 @@ export const inputStyle = StyleSheet.create({
   marginVertical: 10,
   marginHorizontal: 20,
 });
+
+export const formHeading = {
+  fontSize: 25,
+  fontWeight: '500',
+  textAlign: 'center',
+  backgroundColor: colors.color3,
+  color: colors.color2,
+  padding: 5,
+  borderRadius: 5,
+}
+
+export const inputOptions = {
+  style: inputStyle,
+  mode: 'outlined',
+  activeOutlineColor: colors.color1,
+};
+
+export const defaultImg =
+  "https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png";

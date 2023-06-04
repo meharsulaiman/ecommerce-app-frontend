@@ -3,6 +3,7 @@ import React from 'react';
 import { colors } from '../styles/styles';
 import { Avatar } from 'react-native-paper';
 import { iconOptions } from '../screens/ProductDetails';
+import { useNavigation } from '@react-navigation/native';
 
 const CartItem = ({
   name,
@@ -14,6 +15,7 @@ const CartItem = ({
   quantity,
   incrementHandler,
   decrementHandler,
+  navigate,
 }) => {
   return (
     <View
@@ -39,7 +41,11 @@ const CartItem = ({
           paddingHorizontal: 25,
         }}
       >
-        <Text numberOfLines={1} style={{ fontSize: 17 }}>
+        <Text
+          numberOfLines={1}
+          style={{ fontSize: 17 }}
+          onPress={navigate.navigate('productdetails', { id })}
+        >
           {name}
         </Text>
         <Text numberOfLines={1} style={{ fontSize: 17, fontWeight: '900' }}>

@@ -5,19 +5,19 @@ import {
   defaultStyle,
   formHeading,
   inputOptions,
-  inputStyle,
 } from '../styles/styles';
 import { Button, TextInput } from 'react-native-paper';
-import { Toast } from 'react-native-toast-message/lib/src/Toast';
 import Footer from '../components/Footer';
 
-const Login = ({ navigation }) => {
-  const [email, setEmail] = useState('');
+const Verify = ({ navigation }) => {
   const [password, setPassword] = useState('');
+  const [otp, setOtp] = useState('');
   const loading = false;
 
   const submitHandler = () => {
     alert('Yeah');
+    // Remove in the future
+    navigation.navigate('login');
   };
 
   return (
@@ -25,48 +25,43 @@ const Login = ({ navigation }) => {
       <View style={{ ...defaultStyle, backgroundColor: colors.color2 }}>
         {/* Heading */}
         <View style={{ marginBottom: 20 }}>
-          <Text style={formHeading}>Login</Text>
+          <Text style={formHeading}>Reset Password</Text>
         </View>
 
         <View style={styles.container}>
           <TextInput
             {...inputOptions}
-            placeholder='Email'
-            value={email}
-            onChangeText={setEmail}
-            keyboardType='email-address'
+            placeholder='OTP'
+            value={otp}
+            onChangeText={setOtp}
+            keyboardType='number-pad'
           />
+
           <TextInput
             {...inputOptions}
-            placeholder='Password'
+            placeholder='New Password'
             value={password}
-            secureTextEntry={true}
             onChangeText={setPassword}
+            secureTextEntry={true}
           />
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => navigation.navigate('forgetpassword')}
-          >
-            <Text style={styles.forget}>Forget Password</Text>
-          </TouchableOpacity>
 
           <Button
             style={styles.btn}
             textColor={colors.color2}
-            disabled={email === '' || password === ''}
+            disabled={otp === '' || password === ''}
             onPress={submitHandler}
             loading={loading}
           >
-            Log In
+            Reset
           </Button>
 
           <Text style={styles.or}>OR</Text>
 
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('signup')}
+            onPress={() => navigation.navigate('forgetpassword')}
           >
-            <Text style={styles.link}>Sign Up</Text>
+            <Text style={styles.link}>Resend OTP</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -84,13 +79,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     elevation: 10,
   },
-  forget: {
-    color: colors.color2,
-    marginHorizontal: 20,
-    marginBottom: 10,
-    alignSelf: 'flex-end',
-    fontWeight: '100',
-  },
+
   btn: {
     backgroundColor: colors.color1,
     margin: 20,
@@ -112,4 +101,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Verify;
