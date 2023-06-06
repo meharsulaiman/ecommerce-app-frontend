@@ -7,6 +7,7 @@ import ButtonBox from '../../components/ButtonBox';
 import ProductListHeading from '../../components/ProductListHeading';
 import { products } from '../Home';
 import ProductListItem from '../../components/ProductListItem';
+import Chart from '../../components/Chart';
 
 const AdminPanel = ({ navigation }) => {
   const loading = false;
@@ -36,6 +37,7 @@ const AdminPanel = ({ navigation }) => {
             }}
           >
             {/* Chart.js */}
+            <Chart inStock={12} outOfStock={2} />
           </View>
 
           <View>
