@@ -43,8 +43,10 @@ const CartItem = ({
       >
         <Text
           numberOfLines={1}
-          style={{ fontSize: 17 }}
-          onPress={navigate.navigate('productdetails', { id })}
+          style={{
+            fontSize: 17,
+          }}
+          onPress={() => navigate.navigate('productdetails', { id })}
         >
           {name}
         </Text>

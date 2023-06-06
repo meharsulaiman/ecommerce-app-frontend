@@ -14,7 +14,7 @@ const avtarOptions = {
 
 const Footer = ({ activeRoute = 'home' }) => {
   const navigate = useNavigation();
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   const loading = false;
 
   const navigationHandler = (key) => {
@@ -66,7 +66,13 @@ const Footer = ({ activeRoute = 'home' }) => {
           >
             <Avatar.Icon
               {...avtarOptions}
-              icon={activeRoute === 'profile' ? 'account' : 'account-outline'}
+              icon={
+                isAuthenticated === false
+                  ? 'login'
+                  : activeRoute === 'profile'
+                  ? 'account'
+                  : 'account-outline'
+              }
             />
           </TouchableOpacity>
         </View>
