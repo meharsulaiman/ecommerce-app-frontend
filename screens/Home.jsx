@@ -20,10 +20,11 @@ const categories = [
   { category: 'shirts', _id: 7 },
   { category: 'shirts', _id: 8 },
 ];
-const products = [
+export const products = [
   {
     _id: 1,
     name: 'Sample',
+    category: 8954695, // id of category
     price: 1999,
     stock: 12,
     images: [
@@ -35,6 +36,7 @@ const products = [
   {
     _id: 2,
     name: 'MacBook',
+    category: 798645469,
     price: 1999,
     stock: 12,
     images: [
