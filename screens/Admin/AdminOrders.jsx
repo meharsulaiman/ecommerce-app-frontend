@@ -1,49 +1,29 @@
 import { View, Text, ScrollView } from 'react-native';
 import React from 'react';
-import { colors, defaultStyle, formHeading } from '../styles/styles';
-import Header from '../components/Header';
-import Loader from '../components/Loader';
+import { colors, defaultStyle, formHeading } from '../../styles/styles';
+import Header from '../../components/Header';
+import Loader from '../../components/Loader';
+import OrderItem from '../../components/OrderItem';
 import { Headline } from 'react-native-paper';
-import OrderItem from '../components/OrderItem';
+import { orders } from '../Orders';
 
-export const orders = [
-  {
-    _id: 1,
-    shippingInfo: {
-      address: 'address address',
-      city: 'new York',
-      country: 'United States',
-      pinCode: '123',
-    },
-    createdAt: '2015-01-01T00:00:00',
-    orderStatus: 'processing',
-    paymentMethod: 'COD',
-    totalAmount: 2099,
-  },
-  {
-    _id: 2,
-    shippingInfo: {
-      address: 'address address',
-      city: 'new York',
-      country: 'United States',
-      pinCode: '123',
-    },
-    createdAt: '2015-01-01T00:00:00',
-    orderStatus: 'processing',
-    paymentMethod: 'COD',
-    totalAmount: 5099,
-  },
-];
-
-const Orders = () => {
+const AdminOrders = () => {
+  const updateHandler = () => {};
   const loading = false;
-
+  const processOrderLoading = false;
   return (
-    <View style={{ ...defaultStyle, backgroundColor: colors.color5 }}>
+    <View
+      style={{
+        ...defaultStyle,
+        backgroundColor: colors.color5,
+      }}
+    >
       <Header back={true} />
+      {/* Heading */}
       <View style={{ marginBottom: 20, paddingTop: 70 }}>
-        <Text style={formHeading}>Orders</Text>
+        <Text style={formHeading}>All Orders</Text>
       </View>
+
       {loading ? (
         <Loader />
       ) : (
@@ -60,6 +40,9 @@ const Orders = () => {
                   paymentMethod={item.paymentMethod}
                   orderOn={item.createdAt.split('T')[0]}
                   address={`${item.shippingInfo.address}, ${item.shippingInfo.city}, ${item.shippingInfo.country}, ${item.shippingInfo.pinCode}`}
+                  admin={true}
+                  updateHandler={updateHandler}
+                  loading={processOrderLoading}
                 />
               ))
             ) : (
@@ -72,4 +55,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default AdminOrders;
