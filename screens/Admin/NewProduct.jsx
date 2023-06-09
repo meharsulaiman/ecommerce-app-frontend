@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import {
   colors,
@@ -9,15 +9,14 @@ import {
 } from '../../styles/styles';
 import Header from '../../components/Header';
 import Loader from '../../components/Loader';
-import { Button, TextInput } from 'react-native-paper';
+import { Avatar, Button, TextInput } from 'react-native-paper';
 import SelectComponent from '../../components/SelectComponent';
 
-const UpdateProduct = ({ navigation, route }) => {
+const NewProduct = ({ navigation }) => {
   const loading = false;
-  const loadingOther = false;
 
-  const [id] = useState(route.params.id);
   const [name, setName] = useState('');
+  const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [stock, setStock] = useState('');
@@ -41,7 +40,7 @@ const UpdateProduct = ({ navigation, route }) => {
         <Header back={true} />
         {/* Heading */}
         <View style={{ marginBottom: 20, paddingTop: 70 }}>
-          <Text style={formHeading}>Update Product</Text>
+          <Text style={formHeading}>New Product</Text>
         </View>
 
         {loading ? (
@@ -61,17 +60,39 @@ const UpdateProduct = ({ navigation, route }) => {
                 height: 650,
               }}
             >
-              <Button
-                textColor={colors.color1}
-                onPress={() =>
-                  navigation.navigate('productimages', {
-                    id,
-                    images: [],
-                  })
-                }
+              <View
+                style={{
+                  width: 80,
+                  height: 80,
+                  alignSelf: 'center',
+                  marginBottom: 20,
+                }}
               >
-                Manage Images
-              </Button>
+                <Avatar.Image
+                  size={80}
+                  style={{ backgroundColor: colors.color1 }}
+                  source={{
+                    uri: image ? i : null,
+                  }}
+                />
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('camera', { newProduct: true })
+                  }
+                >
+                  <Avatar.Icon
+                    icon={'camera'}
+                    size={30}
+                    color={colors.color3}
+                    style={{
+                      backgroundColor: colors.color2,
+                      position: 'absolute',
+                      bottom: 0,
+                      right: -5,
+                    }}
+                  />
+                </TouchableOpacity>
+              </View>
 
               <TextInput
                 {...inputOptions}
@@ -89,14 +110,14 @@ const UpdateProduct = ({ navigation, route }) => {
                 {...inputOptions}
                 placeholder='Price'
                 value={price}
-                onChangeText={setPrice}
                 keyboardType='number-pad'
+                onChangeText={setPrice}
               />
               <TextInput
                 {...inputOptions}
                 placeholder='Stock'
-                keyboardType='number-pad'
                 value={stock}
+                keyboardType='number-pad'
                 onChangeText={setStock}
               />
 
@@ -114,8 +135,8 @@ const UpdateProduct = ({ navigation, route }) => {
 
               <Button
                 onPress={submitHandler}
-                loading={loadingOther}
-                disabled={loadingOther}
+                loading={loading}
+                disabled={loading}
                 textColor={colors.color2}
                 style={{
                   backgroundColor: colors.color1,
@@ -123,7 +144,7 @@ const UpdateProduct = ({ navigation, route }) => {
                   padding: 6,
                 }}
               >
-                Update
+                Create
               </Button>
             </View>
           </ScrollView>
@@ -139,4 +160,4 @@ const UpdateProduct = ({ navigation, route }) => {
   );
 };
 
-export default UpdateProduct;
+export default NewProduct;
