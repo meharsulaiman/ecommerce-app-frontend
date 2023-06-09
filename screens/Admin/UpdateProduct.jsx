@@ -16,6 +16,17 @@ const UpdateProduct = ({ navigation, route }) => {
   const loading = false;
   const loadingOther = false;
 
+  const images = [
+    {
+      _id: 'hdfksajfg',
+      url: 'https://assets.sutori.com/user-uploads/image/d2b2b74d-8c49-4089-b709-27b4ef8afb26/17a21af7c77dda3c92f78a623a49274c.jpeg',
+    },
+    {
+      _id: 'afhaldjfg',
+      url: 'https://cdn.pixabay.com/photo/2023/05/23/15/26/bengal-cat-8012976_1280.jpg',
+    },
+  ];
+
   const [id] = useState(route.params.id);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -66,7 +77,7 @@ const UpdateProduct = ({ navigation, route }) => {
                 onPress={() =>
                   navigation.navigate('productimages', {
                     id,
-                    images: [],
+                    images,
                   })
                 }
               >
