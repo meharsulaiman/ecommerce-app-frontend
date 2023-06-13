@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   colors,
   defaultImg,
@@ -16,7 +16,7 @@ import {
 import { Avatar, Button, TextInput } from 'react-native-paper';
 import Footer from '../components/Footer';
 
-const Signup = ({ navigation }) => {
+const Signup = ({ navigation, route }) => {
   const [email, setEmail] = useState('');
   const [avatar, setAvatar] = useState('');
   const [name, setName] = useState('');
@@ -37,6 +37,9 @@ const Signup = ({ navigation }) => {
   const disableBtn =
     !name || !email || !password || !address || !city || !country || !pinCode;
 
+  useEffect(() => {
+    if (route.params?.image) setAvatar(route.params?.image);
+  }, [route.params]);
   return (
     <>
       <View style={{ ...defaultStyle, backgroundColor: colors.color2 }}>

@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   colors,
   defaultStyle,
@@ -12,7 +12,7 @@ import Loader from '../../components/Loader';
 import { Avatar, Button, TextInput } from 'react-native-paper';
 import SelectComponent from '../../components/SelectComponent';
 
-const NewProduct = ({ navigation }) => {
+const NewProduct = ({ navigation, route }) => {
   const loading = false;
 
   const [name, setName] = useState('');
@@ -28,6 +28,10 @@ const NewProduct = ({ navigation }) => {
   const submitHandler = () => {
     console.log(name, description, price, stock, categoryID);
   };
+
+  useEffect(() => {
+    if (route.params?.image) setImage(route.params?.image);
+  }, [route.params]);
 
   return (
     <>
@@ -72,7 +76,7 @@ const NewProduct = ({ navigation }) => {
                   size={80}
                   style={{ backgroundColor: colors.color1 }}
                   source={{
-                    uri: image ? i : null,
+                    uri: image ? image : null,
                   }}
                 />
                 <TouchableOpacity
